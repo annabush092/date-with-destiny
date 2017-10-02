@@ -22,3 +22,77 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+#<Hashie::Mash attributes=#<Hashie::Mash groups=#<Hashie::Array []>>
+
+beenHere=#<Hashie::Mash count=0 lastCheckinExpiredAt=0 marked=false unconfirmedCount=0>
+
+canonicalUrl="https://foursquare.com/v/aa-no-losers/40a40c00f964a52012f31ee3"
+
+categories= #<Hashie::Array []>
+
+closed=true
+
+contact=#<Hashie::Mash>
+
+createdAt=1084492800
+
+dislike=false
+
+hereNow=#<Hashie::Mash count=0 groups=#<Hashie::Array []>
+
+summary="Nobody here">
+
+id="40a40c00f964a52012f31ee3"
+
+inbox=#<Hashie::Mash count=0 items=#<Hashie::Array []>>
+likes=#<Hashie::Mash count=0 groups=#<Hashie::Array []>>
+
+listed=#<Hashie::Mash count=0 groups=#<Hashie::Array [#<Hashie::Mash count=0 items=#<Hashie::Array []> name="Lists from other people" type="others">]>>
+
+location=#<Hashie::Mash
+  address="Rodney Avenue"
+  cc="US"
+  city="Los Angeles"
+  country="United States"
+  crossStreet="at Prospect Avenue"
+  formattedAddress=#<Hashie::Array ["Rodney Avenue (at Prospect Avenue)", "Los Angeles, CA 90027", "United States"]>
+  lat=34.10208157
+  lng=-118.289464
+  postalCode="90027"
+  state="CA">
+
+name="AA No Losers"
+
+ok=false
+
+pageUpdates=#<Hashie::Mash count=0 items=#<Hashie::Array []>>
+
+photos=#<Hashie::Mash count=0 groups=#<Hashie::Array []>>
+
+reasons=#<Hashie::Mash count=0 items=#<Hashie::Array []>>
+
+shortUrl="http://4sq.com/d3XFW2"
+
+specials=#<Hashie::Mash count=0
+
+items=#<Hashie::Array []>>
+
+stats=#<Hashie::Mash checkinsCount=24 tipCount=0 usersCount=5 visitsCount=24> tags=#<Hashie::Array ["20s crowd", "after work", "good for dates", "good for groups", "hipsters", "locals", "pick up spot", "quiet"]>
+
+timeZone="America/Los_Angeles"
+
+tips=#<Hashie::Mash count=0 groups=#<Hashie::Array [#<Hashie::Mash count=0 items=#<Hashie::Array []> name="All tips" type="others">]>> venueChains=#<Hashie::Array []> verified=false>
+
+
+x = Foursquare.client.venue_categories(:ll => '40.731123, -73.997773', radius: 6000)
+x[3].categories.map do |c|
+    c[:name]
+end
+=> name of all categories within the food category
+x[3][:id]
+ => "4d4b7105d754a06374d81259"
+ Foursquare.client.search_venues(:ll => '40.731123, -73.997773', radius: 6000, categoryId: "4d4b7105d754a06374d81259")[:venues].map do |venue|
+     venue[:id]
+ end
