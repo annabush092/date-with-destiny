@@ -4,11 +4,16 @@
   <% end %>
 <% end %>
 
-<%= form_for @plan do |f| %>
-  <%= f.label :date %>
-  <%= f.date_field :date %>
-  <%= f.hidden_field :venue_id, :value => @plan.venue_id %>
-  <%= f.submit %>
+<%= form_tag plans_path, method: "post" do %>
+
+  <%= label_tag 'zipcode' %>
+  <%= number_field_tag 'zipcode' %>
+
+  <%= label_tag 'date' %>
+  <%= date_field_tag 'date' %>
+
+  <%= submit_tag 'find your destined destination' %>
+
 <% end %>
 
-<p> Your venue is: <%= @plan.venue.name %> </p>
+<%= link_to 'defy your fate', new_plan_path %>

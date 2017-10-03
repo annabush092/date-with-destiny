@@ -1,17 +1,22 @@
 Rails.application.routes.draw do
 
-  get 'venues/start', to: 'venues#start'
-  post 'venues/randomize', to: 'venues#randomize'
+  # get 'nightlives/start', to: 'nightlives#start'
+  # post 'nightlives/randomize', to: 'nightlives#randomize'
+  resources :nightlives, only: [:show]
+  # get 'activities/start', to: 'activities#start'
+  # post 'activities/randomize', to: 'activities#randomize'
+  resources :activities, only: [:show]
+  # get 'restaurants/start', to: 'restaurants#start'
+  # post 'restaurants/randomize', to: 'restaurants#randomize'
+  resources :restaurants, only: [:show]
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#logout'
+  resources :users, only: [:show, :new, :create, :edit, :update]
 
-  resources :venues, only: [:show]
   resources :plans
-  resources :users
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

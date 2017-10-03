@@ -1,6 +1,8 @@
 class Plan < ApplicationRecord
   belongs_to :user
-  belongs_to :venue
+  belongs_to :restaurant
+  belongs_to :nightlife
+  belongs_to :activity
 
   validate :date_checker
 

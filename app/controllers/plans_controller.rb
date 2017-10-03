@@ -5,11 +5,16 @@ class PlansController < ApplicationController
   end
 
   def new
-    @plan = Plan.new(venue_id: params[:venue_id])
+    @plan = Plan.new
   end
 
   def create
-    @plan = Plan.new(plan_params(:date, :venue_id))
+    zipcode = params.permit(:zipcode)[:zipcode].to_i
+    @restaurant = Restaurant.find_venue(zipcode)
+    @activity = Activity.find_venue(zipcode)
+    @nightlife = Nightlife.find_venue(zipcode)
+
+    @plan = Plan.new(plan_params(:date), restaurant_id: @restaurant.id, activity_id: @activity.id, nightlife_id: @nightlife.id)
     @plan.user_id = session[:id]
     if @plan.save
       redirect_to plan_path(@plan)

@@ -10,25 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003153434) do
+ActiveRecord::Schema.define(version: 20171003213212) do
 
-  create_table "plans", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "venue_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.date "date"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password_digest"
-  end
-
-  create_table "venues", force: :cascade do |t|
+  create_table "activities", force: :cascade do |t|
     t.string "name"
     t.string "street_address"
     t.string "city"
@@ -37,6 +21,46 @@ ActiveRecord::Schema.define(version: 20171003153434) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "nightlives", force: :cascade do |t|
+    t.string "name"
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.integer "zipcode"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "date"
+    t.integer "nightlife_id"
+    t.integer "activity_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.integer "zipcode"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
 end
