@@ -5,13 +5,12 @@ class PlansController < ApplicationController
   end
 
   def new
-    @plan = Plan.new
+    @plan = Plan.new(venue_id: params[:venue_id])
   end
 
   def create
-    @plan = Plan.new(plan_params)
-    @plan.user_id =  #use sessions
-    @plan.venue_id = Foursquare.find_venue(params.permit(:zipcode))
+    @plan = Plan.new(plan_params(:date, :venue_id))
+    @plan.user_id = session[:id]
     if @plan.save
       redirect_to plan_path(@plan)
     else
@@ -25,21 +24,27 @@ class PlansController < ApplicationController
 
   def update
     find_plan
-    if @plan.update(plan_params)
+    if @plan.update(plan_params(:date))
       redirect_to plan_path(@plan)
     else
       render :edit
     end
   end
 
+  def destroy
+    find_plan
+    @plan.destroy
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def find_plan
-    @plan = Plan.find_by(params[:id])
+    @plan = Plan.find_by(id: params[:id])
   end
 
-  def plan_params
-    params.require(:plan).permit(:date)
+  def plan_params(*args)
+    params.require(:plan).permit(args)
   end
 
 end
