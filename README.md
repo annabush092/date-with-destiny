@@ -6,6 +6,7 @@ x[3].categories.map do |c|
 end
 => id/name of all categories within the food category
 
+(Food)
 x[3][:id]
  => "4d4b7105d754a06374d81259"
 
@@ -23,14 +24,18 @@ x[3][:id]
 ["4bf58dd8d48988d143941735", "Breakfast Spot"],
 ["52e81612bcbc57f1066b7a0c", "Bubble Tea Shop"],
 ["52e81612bcbc57f1066b79f4", "Buffet"],
-["4bf58dd8d48988d16c941735", "Burger Joint"],
+
+x["4bf58dd8d48988d16c941735", "Burger Joint"],
+
 ["4bf58dd8d48988d128941735", "Cafeteria"],
 ["4bf58dd8d48988d16d941735", "Café"],
 ["4bf58dd8d48988d17a941735", "Cajun / Creole Restaurant"],
 ["4bf58dd8d48988d144941735", "Caribbean Restaurant"],
 ["5293a7d53cf9994f4e043a45", "Caucasian Restaurant"],
 ["4bf58dd8d48988d1e0931735", "Coffee Shop"],
-["52e81612bcbc57f1066b7a00", "Comfort Food Restaurant"],
+
+x["52e81612bcbc57f1066b7a00", "Comfort Food Restaurant"],
+
 ["52e81612bcbc57f1066b79f2", "Creperie"],
 ["52f2ae52bcbc57f1066b8b81", "Czech Restaurant"],
 ["4bf58dd8d48988d146941735", "Deli / Bodega"],
@@ -48,13 +53,17 @@ x[3][:id]
 ["4bf58dd8d48988d120951735", "Food Court"],
 ["56aa371be4b08b9a8d57350b", "Food Stand"],
 ["4bf58dd8d48988d1cb941735", "Food Truck"],
-["4bf58dd8d48988d10c941735", "French Restaurant"],
+
+x["4bf58dd8d48988d10c941735", "French Restaurant"],
+
 ["4d4ae6fc7a7b7dea34424761", "Fried Chicken Joint"],
 ["4bf58dd8d48988d155941735", "Gastropub"],
 ["4bf58dd8d48988d10d941735", "German Restaurant"],
 ["4c2cd86ed066bed06c3c5209", "Gluten-free Restaurant"],
 ["4bf58dd8d48988d10e941735", "Greek Restaurant"],
+
 ["52e81612bcbc57f1066b79ff", "Halal Restaurant"],
+
 ["52e81612bcbc57f1066b79fe", "Hawaiian Restaurant"],
 ["4bf58dd8d48988d16f941735", "Hot Dog Joint"],
 ["52e81612bcbc57f1066b79fa", "Hungarian Restaurant"],
@@ -90,13 +99,17 @@ x[3][:id]
 ["4bf58dd8d48988d14f941735", "Southern / Soul Food Restaurant"],
 ["4bf58dd8d48988d150941735", "Spanish Restaurant"],
 ["5413605de4b0ae91d18581a9", "Sri Lankan Restaurant"],
-["4bf58dd8d48988d1cc941735", "Steakhouse"], 
+
+x["4bf58dd8d48988d1cc941735", "Steakhouse"],
+
 ["4bf58dd8d48988d158941735", "Swiss Restaurant"],
 ["4bf58dd8d48988d1dc931735", "Tea Room"],
 ["56aa371be4b08b9a8d573538", "Theme Restaurant"],
 ["4f04af1f2fb6e1c99f3db0bb", "Turkish Restaurant"],
 ["52e928d0bcbc57f1066b7e96", "Ukrainian Restaurant"],
-["4bf58dd8d48988d1d3941735", "Vegetarian / Vegan Restaurant"],
+
+x["4bf58dd8d48988d1d3941735", "Vegetarian / Vegan Restaurant"],
+
 ["4bf58dd8d48988d14c941735", "Wings Joint"]]
 
 
