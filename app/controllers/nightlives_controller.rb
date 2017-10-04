@@ -1,7 +1,7 @@
 class NightlivesController < ApplicationController
 
   def show
-    @nightlife = Nightlife.find_by(id: params[:id])
+    @venue = Nightlife.find_by(id: params[:id])
   end
 
   # def start

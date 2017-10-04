@@ -1,5 +1,7 @@
 class Venue < ApplicationRecord
 
+  self.abstract_class = true
+  
   validates :street_address, uniqueness: true
 
   def self.find_venue(zipcode)

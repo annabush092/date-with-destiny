@@ -44,10 +44,28 @@
 # end
 
 #  Comfort Food
-array_of_numbers = Foursquare.client.search_venues(:ll => '40.731123, -73.997773', radius: 6000, categoryId: "52e81612bcbc57f1066b7a00")[:venues].map do |venue|
+# array_of_numbers = Foursquare.client.search_venues(:ll => '40.731123, -73.997773', radius: 6000, categoryId: "52e81612bcbc57f1066b7a00")[:venues].map do |venue|
+#      venue[:id]
+#  end
+# # => array of ids that we can put in the seeds.
+# array_of_numbers.each do |num|
+#   Restaurant.create(Foursquare.make_params(num))
+# end
+#
+# #bars
+# array_of_numbers = Foursquare.client.search_venues(:ll => '40.731123, -73.997773', radius: 6000, categoryId: "4bf58dd8d48988d116941735")[:venues].map do |venue|
+#      venue[:id]
+#  end
+# # => array of ids that we can put in the seeds.
+# array_of_numbers.each do |num|
+#   Nightlife.create(Foursquare.make_params(num))
+# end
+
+#general activities
+array_of_numbers = Foursquare.client.search_venues(:ll => '40.731123, -73.997773', radius: 6000, categoryId: "4bf58dd8d48988d1f1931735")[:venues].map do |venue|
      venue[:id]
  end
 # => array of ids that we can put in the seeds.
 array_of_numbers.each do |num|
-  Venue.create(Foursquare.make_params(num))
+  Activity.create(Foursquare.make_params(num))
 end

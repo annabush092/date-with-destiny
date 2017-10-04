@@ -1,9 +1,8 @@
 <h1> Plan for <%= @plan.date %></h1>
 
-<%= @plan.restaurant.name %>
-<%= @plan.activity.name %>
-<%= @plan.nightlife.name %>
-
+<%= @plan.restaurant.name %> | <%= link_to 'Venue info', restaurant_path(@plan.restaurant) %><br>
+<%= @plan.activity.name %> | <%= link_to 'Venue info', activity_path(@plan.activity) %><br>
+<%= @plan.nightlife.name %> | <%= link_to 'Venue info', nightlife_path(@plan.nightlife) %><br>
 
 <%= link_to 'edit plan', edit_plan_path(@plan) %>
 <%= link_to 'delete plan', plan_path(@plan), method: 'delete' %>

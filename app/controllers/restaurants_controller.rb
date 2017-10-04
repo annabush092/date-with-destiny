@@ -1,12 +1,12 @@
 class RestaurantsController < ApplicationController
 
   def show
-    @restaurant = Restaurant.find_by(id: params[:id])
+    @venue = Restaurant.find_by(id: params[:id])
   end
 
   # def start
   # end
-  # 
+  #
   # def randomize
   #   zipcode = params.permit(:zipcode)[:zipcode].to_i
   #   @restaurant = Restaurant.find_restaurant(zipcode)
