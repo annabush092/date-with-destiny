@@ -13,3 +13,126 @@
  *= require_tree .
  *= require_self
  */
+
+
+body {
+    background-color: black;
+    color: white;
+    font-family: Open Sans;
+}
+
+ ul {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
+     background-color: black;
+ }
+
+ li {
+     font-family: Open Sans;
+     font-size: 20px;
+     color: white;
+ }
+
+ li a {
+     display: block;
+     background-color: black;
+     color:  #66ffff;
+     font-family: Codystar;
+     text-align: center;
+     text-decoration: none;
+ }
+
+ li a:hover:not(.active) {
+     color: white;
+
+ }
+
+ .active {
+     background-color: black;
+     color:  #66ffff: ;
+     font-size: 30px;
+ }
+
+ h1 {
+   font-family: Petit Formal Script;
+   color:  #63E169;
+   font-weight: normal;
+   font-size: 45px;
+ }
+
+ h2 {
+   font-family: Open Sans;
+   color:  #D82BF8;
+   text-decoration: none;
+ }
+
+ p {
+   font-family: Open Sans;
+   color: white
+  }
+
+  a {
+    font-family: Codystar;
+    color:  #66ffff;
+    text-decoration: none;
+   }
+
+
+ a:hover {
+   font-family: Codystar;
+   color:  white;
+   text-decoration: none;
+  }
+
+
+div {
+   border-radius: 5px;
+   background-color: black;
+   padding: 50px;
+}
+
+input {
+    width: 45%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border: none;
+    border-bottom: 2px solid #66ffff;
+    background: black;
+    color: white;
+}
+
+input[type="submit"] {
+    width: 45%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border: 2px solid #66ffff;
+    background: black;
+    color: white;
+    font-size: 20px;
+    font-family: Codystar;
+    border-radius: 10px;
+}
+
+input[type="submit"]:hover {
+  font-family: Codystar;
+  background-color: #66ffff;
+  color: black;
+}
+
+
+.button {
+    width: 20%;
+    border: none;
+    background: black;
+    color: #66ffff;
+    font-size: 20px;
+    font-family: Codystar;
+    border-radius: 10px;
+}
+
+.button:hover {
+  background-color: black;
+  color: white;
+}

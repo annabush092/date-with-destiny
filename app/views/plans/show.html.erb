@@ -1,8 +1,31 @@
-<h1> Plan for <%= @plan.date %></h1>
+<div>
 
-<%= @plan.restaurant.name %> | <%= link_to 'Venue info', restaurant_path(@plan.restaurant) %><br>
-<%= @plan.activity.name %> | <%= link_to 'Venue info', activity_path(@plan.activity) %><br>
-<%= @plan.nightlife.name %> | <%= link_to 'Venue info', nightlife_path(@plan.nightlife) %><br>
+<h1> And so it is written...</h1>
+<h2><%= @plan.date.strftime("%A, %B %d %Y") %></h2>
+<br>
+<h2>Activity</h2>
+<table style="width:50%">
+<tr>
+  <td style="width:50%"><%= @plan.activity.name %></td>
+  <td><%= link_to 'Venue info', activity_path(@plan.activity) %></td>
+</tr>
+</table>
+<h2>Dinner</h2>
+<table style="width:50%">
+<tr>
+  <td style="width:50%"><%= @plan.restaurant.name %></td>
+  <td><%= link_to 'Venue info', restaurant_path(@plan.restaurant) %></td>
+</tr>
+</table>
+<h2>Nightlife</h2>
+<table style="width:50%">
+<tr>
+  <td style="width:50%"><%= @plan.nightlife.name %></td>
+  <td><%= link_to 'Venue info', nightlife_path(@plan.nightlife) %></td>
+</tr>
+</table>
+<br>
+<br>
+<h1><%= link_to 'DEFY YOUR DESTINY', plan_path(@plan), method: 'delete' %></p></h1>
 
-<%= link_to 'edit plan', edit_plan_path(@plan) %>
-<%= link_to 'delete plan', plan_path(@plan), method: 'delete' %>
+</div>

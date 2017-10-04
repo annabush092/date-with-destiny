@@ -1,19 +1,23 @@
-<%  if @plan.errors.any? %>
+<div>
+  <%  if @plan.errors.any? %>
   <% @plan.errors.full_messages.each do |m| %>
   <%= m %><br>
   <% end %>
 <% end %>
 
+<h1>Make a date with destiny...</h1>
+
 <%= form_tag plans_path, method: "post" do %>
 
-  <%= label_tag 'zipcode' %>
-  <%= number_field_tag 'zipcode' %>
+  <%= label_tag 'zipcode' %><br>
+  <%= number_field_tag 'zipcode' %><br>
 
-  <%= label_tag 'date' %>
-  <%= date_field_tag 'date' %>
+  <%= label_tag 'date' %><br>
+  <%= date_field_tag 'date' %><br>
 
-  <%= submit_tag 'find your destined destination' %>
+  <%= submit_tag 'DECIDE YOUR FATE' %>
 
 <% end %>
-
-<%= link_to 'defy your fate', new_plan_path %>
+<br>
+<br>
+</div>
