@@ -1,17 +1,21 @@
 
 
 x = Foursquare.client.venue_categories(:ll => '40.731123, -73.997773', radius: 6000)
-x[3].categories.map do |c|
-    [c[:id], c[:name]]
+x[4].categories.map do |c|
+    c[:id]
 end
 => id/name of all categories within the food category
 
 
 x[0] = ["4d4b7104d754a06370d81259", "Arts & Entertainment"],
+
 x[1] = ["4d4b7105d754a06372d81259", "College & University"],
 x[2] = ["4d4b7105d754a06373d81259", "Event"],
+
 x[3] = ["4d4b7105d754a06374d81259", "Food"],
+
 x[4] = ["4d4b7105d754a06376d81259", "Nightlife Spot"],
+
 x[5] = ["4d4b7105d754a06377d81259", "Outdoors & Recreation"],
 x[6] = ["4d4b7105d754a06375d81259", "Professional & Other Places"],
 x[7] = ["4e67e38e036454776db1fb3a", "Residence"],
@@ -31,11 +35,15 @@ FOOD CATEGORIES:
 ["52e81612bcbc57f1066b7a02", "Belgian Restaurant"],
 ["52e81612bcbc57f1066b79f1", "Bistro"],
 ["4bf58dd8d48988d143941735", "Breakfast Spot"],
+
 ["52e81612bcbc57f1066b7a0c", "Bubble Tea Shop"],
+
 ["52e81612bcbc57f1066b79f4", "Buffet"],
 x["4bf58dd8d48988d16c941735", "Burger Joint"],
+
 ["4bf58dd8d48988d128941735", "Cafeteria"],
 ["4bf58dd8d48988d16d941735", "Café"],
+
 ["4bf58dd8d48988d17a941735", "Cajun / Creole Restaurant"],
 ["4bf58dd8d48988d144941735", "Caribbean Restaurant"],
 ["5293a7d53cf9994f4e043a45", "Caucasian Restaurant"],
@@ -55,9 +63,11 @@ x["52e81612bcbc57f1066b7a00", "Comfort Food Restaurant"],
 ["4bf58dd8d48988d16e941735", "Fast Food Restaurant"],
 ["4edd64a0c7ddd24ca188df1a", "Fish & Chips Shop"],
 ["52e81612bcbc57f1066b7a09", "Fondue Restaurant"],
+
 ["4bf58dd8d48988d120951735", "Food Court"],
 ["56aa371be4b08b9a8d57350b", "Food Stand"],
 ["4bf58dd8d48988d1cb941735", "Food Truck"],
+
 x["4bf58dd8d48988d10c941735", "French Restaurant"],
 ["4d4ae6fc7a7b7dea34424761", "Fried Chicken Joint"],
 ["4bf58dd8d48988d155941735", "Gastropub"],

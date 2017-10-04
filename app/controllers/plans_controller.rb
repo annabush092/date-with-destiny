@@ -9,7 +9,7 @@ class PlansController < ApplicationController
   end
 
   def create
-    zipcode = params.permit(:zipcode)[:zipcode].to_i
+    zipcode = params.permit(:zipcode)[:zipcode]
     @restaurant = Restaurant.find_venue(zipcode)
     @activity = Activity.find_venue(zipcode)
     @nightlife = Nightlife.find_venue(zipcode)
