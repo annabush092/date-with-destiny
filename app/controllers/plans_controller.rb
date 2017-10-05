@@ -1,5 +1,7 @@
 class PlansController < ApplicationController
 
+  before_action :require_login
+
   def show
     find_plan
   end
