@@ -6,6 +6,8 @@ git_source(:github) do |repo_name|
 end
 
 
+gem 'geocoder'
+
 gem 'foursquare2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

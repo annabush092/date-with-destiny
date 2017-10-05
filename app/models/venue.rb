@@ -2,46 +2,7 @@ class Venue < ApplicationRecord
 
   self.abstract_class = true
 
-  # def self.find_venue(zipcode)
-  #   zip_array = self.all.select { |venue| venue.zipcode == zipcode }
-  #   zip_array.sample
-  # end
-
-  def self.find_venue(zip)
-    #zipcode vs lat/lon data
-    locations = {
-      :"10001" => "40.7537, -73.9992",
-      :"10011" => "40.741603, -73.998246",
-      :"10018" => "40.754371, -73.990073",
-      :"10019" => "40.763719, -73.986038",
-      :"10020" => "40.758063, -73.978061",
-      :"10036" => "40.754919, -73.981842",
-      :"10010" => "40.739206, -73.983416",
-      :"10016" => "40.746978, -73.979876",
-      :'10017' => "40.752920, -73.975729",
-      :"10022" => "40.758265, -73.967554",
-      :"10012" => "40.729084, -74.006197",
-      :"10013" => "40.720548, -74.004552",
-      :"10014" => "40.729019, -74.006151",
-      :"10004" => "40.702183, -74.012441",
-      :"10005" => "40.705702, -74.008463",
-      :"10006" => "40.712703, -74.010724",
-      :"10007" => "40.709758, -74.013342",
-      :"10038" => "40.707592, -74.006082",
-      :"10280" => "40.708562, -74.016772",
-      :"10002" => "40.716684, -73.987157",
-      :"10003" => "40.731302, -73.988333",
-      :"10009" => "40.725023, -73.980135",
-      :"11206" => "40.702159, -73.941750",
-      :"11221" => "40.691538, -73.926791",
-      :"11237" => "40.704791, -73.922156",
-      :"11211" => "40.712793, -73.952041",
-      :"11222" => "40.731255, -73.950474",
-      :"11201" => "40.695123, -73.988926",
-      :"11205" => "40.693960, -73.963881",
-      :"11215" => "40.669396, -73.984291",
-      :"11217" => "40.683202, -73.980368",
-      :"11231" => "40.678854, -74.004627"}
+  def self.find_venue(address)
 
       #categories for each venue
     restaurant_array = ["503288ae91d4c4b30a586d67", "4bf58dd8d48988d1c8941735",
@@ -99,9 +60,15 @@ class Venue < ApplicationRecord
       puts "YOU HAVE AN ERROR IN YOUR CASE STATEMENT"
     end
 
+    coordinates = Geocoder.coordinates(address).join(", ")
+
+    if !!coordinates
     #find foursquare ids in this zipcode of the right type
-    fs_id_array = Foursquare.client.search_venues(:ll => locations[zip.to_sym], radius: 6000, categoryId: rand_category)[:venues].map do |venue|
-         venue[:id]
+      fs_id_array = Foursquare.client.search_venues(:ll => coordinates, radius: 6000, categoryId: rand_category, limit: 5)[:venues].map do |venue|
+           venue[:id]
+       end
+     else
+       return "Bad Foursquare"
      end
 
     #choose a random venue from the found foursquare venue ids
@@ -111,11 +78,12 @@ class Venue < ApplicationRecord
     end
 
     #return params that can be used to make a new venue child object
-    self.find_or_create_by(Foursquare.make_params(fsid))
-  end
-
-  def self.zipcodes
-    self.all.map { |venue| venue.zipcode }.uniq
+    new_ven = self.find_or_create_by(Foursquare.make_params(fsid))
+    if !!new_ven
+      return new_ven
+    else
+      return "Bad Foursquare"
+    end
   end
 
 end
