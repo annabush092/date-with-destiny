@@ -1,12 +1,18 @@
 <div>
 
 <% if signed_in %>
-  <h1>Hello, <%= current_user.name %>. </h1>
-  <br>
-  <br>
-  <h1><%= link_to 'VIEW YOUR PLANS', user_path(current_user) %></h1><br>
-  <h1><%= link_to 'MAKE A DATE WITH DESTINY', new_plan_path %></h1>
-
+<table style="width:90%">
+  <tr>
+    <td>
+      <h1>Hello, <%= current_user.name %> </h1><br>
+      <h1><%= link_to 'VIEW YOUR PLANS', user_path(current_user) %></h1><br>
+      <h1><%= link_to 'MAKE A DATE WITH DESTINY', new_plan_path %></h1>
+    </td>
+    <td>
+      <img src="<%=image_path("ball.png")%>" width=500px>
+    </td>
+  </tr>
+</table>
 <% else %>
   <h1>Login</h1>
   <%= form_for :session, url: login_path, method: 'post' do |f| %>

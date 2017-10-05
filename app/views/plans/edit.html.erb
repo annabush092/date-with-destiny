@@ -1,17 +1,35 @@
-<%  if @plan.errors.any? %>
+<div>
+
+<h1>Change your destiny...</h1>
+
+  <%  if @plan.errors.any? %>
   <% @plan.errors.full_messages.each do |m| %>
   <%= m %><br>
   <% end %>
 <% end %>
 
+
 <%= form_for @plan do |f| %>
   <%= f.label :date %>
   <%= f.date_field :date %>
+  <br>
+  <h2>Activity</h2>
+  <%= f.check_box :activity_id %>
+  <%= f.label :activity_id, @plan.activity.name, class: "container" %>
+
+  <h2>Restaurant</h2>
+  <%= f.check_box :restaurant_id %>
+  <%= f.label :restaurant_id, @plan.restaurant.name %>
+
+  <h2>Nightlife</h2>
+  <%= f.check_box :nightlife_id %>
+  <%= f.label :nightlife_id, @plan.nightlife.name %>
+
+<br>
+<br>
   <%= f.submit %>
 <% end %>
 
 
-
-<p> Your venue is: <%= @plan.venue.name %> </p>
-
-<h1><%= link_to 'DEFY YOUR FATE', new_plan_path %></h1>
+<h1><%= link_to 'DEFY YOUR DESTINY', plan_path(@plan), method: 'delete' %></p></h1>
+</div>

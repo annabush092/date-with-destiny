@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       session[:id] = @user.id
       flash[:success] = "You have successfully logged in"
-      redirect_to user_path(@user)
+      redirect_to root_path
     else
       # flash[:error] = "Your username/password do not match any records. Please try again."
       redirect_to login_path

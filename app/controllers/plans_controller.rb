@@ -9,12 +9,11 @@ class PlansController < ApplicationController
   end
 
   def create
-    zipcode = params.permit(:zipcode)[:zipcode]
-    @restaurant = Restaurant.find_venue(zipcode)
-    @activity = Activity.find_venue(zipcode)
-    @nightlife = Nightlife.find_venue(zipcode)
+    @plan = Plan.new(date: params.permit(:date)[:date], user_id: session[:id], zipcode: params.permit(:zipcode)[:zipcode])
+    @restaurant = Restaurant.find_venue(@plan.zipcode)
+    @activity = Activity.find_venue(@plan.zipcode)
+    @nightlife = Nightlife.find_venue(@plan.zipcode)
 
-    @plan = Plan.new(date: params.permit(:date)[:date], user_id: session[:id])
     if @restaurant && @activity && @nightlife
       @plan.restaurant_id = @restaurant.id
       @plan.activity_id = @activity.id
@@ -32,12 +31,26 @@ class PlansController < ApplicationController
   end
 
   def update
-    # find_plan
-    # if @plan.update(plan_params(:date))
-    #   redirect_to plan_path(@plan)
-    # else
-    #   render :edit
-    # end
+    find_plan
+    @plan.date = params[:plan][:date]
+    if params[:plan][:restaurant_id] == "1"
+      @restaurant = Restaurant.find_venue(@plan.zipcode)
+      @plan.restaurant = @restaurant
+    end
+    if params[:plan][:activity_id] == "1"
+      @activity = Activity.find_venue(@plan.zipcode)
+      @plan.activity = @activity
+    end
+    if params[:plan][:nightlife_id] == "1"
+      @nightlife = Nightlife.find_venue(@plan.zipcode)
+      @plan.nightlife = @nightlife
+    end
+
+    if @plan.save
+      redirect_to plan_path(@plan)
+    else
+      render :edit
+    end
   end
 
   def destroy
