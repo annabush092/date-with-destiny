@@ -10,14 +10,16 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(date: params.permit(:date)[:date], user_id: session[:id], address: params.permit(:address)[:address])
-    @restaurant = Restaurant.find_venue(@plan.address)
-    @activity = Activity.find_venue(@plan.address)
-    @nightlife = Nightlife.find_venue(@plan.address)
 
-    if (@restaurant=="Bad Foursquare")||(@activity=="Bad Foursquare")||(@nightlife=="Bad Foursquare")
-      @plan.record.errors[:restaurant_id] << "Foursquare error..."
-      render :new
-    else
+    begin
+      @restaurant = Restaurant.find_venue(@plan.address)
+      @activity = Activity.find_venue(@plan.address)
+      @nightlife = Nightlife.find_venue(@plan.address)
+    rescue ArgumentError => msg
+      @plan.errors[:activity_id] << msg
+    end
+
+    if @restaurant && @activity && @nightlife
       @plan.restaurant_id = @restaurant.id
       @plan.activity_id = @activity.id
       @plan.nightlife_id = @nightlife.id

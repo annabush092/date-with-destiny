@@ -57,24 +57,24 @@ class Venue < ApplicationRecord
     when Nightlife.to_s
       rand_category = nightlife_array.sample
     else
-      puts "YOU HAVE AN ERROR IN YOUR CASE STATEMENT"
+      raise ArgumentError, "Unable to choose a foursquare category...", caller
     end
 
-    coordinates = Geocoder.coordinates(address).join(", ")
+    coordinates = Geocoder.coordinates(address)
 
     if !!coordinates
     #find foursquare ids in this zipcode of the right type
-      fs_id_array = Foursquare.client.search_venues(:ll => coordinates, radius: 6000, categoryId: rand_category, limit: 5)[:venues].map do |venue|
+      fs_id_array = Foursquare.client.search_venues(:ll => coordinates.join(", "), radius: 6000, categoryId: rand_category, limit: 5)[:venues].map do |venue|
            venue[:id]
        end
      else
-       return "Bad Foursquare"
+       raise ArgumentError, "Invalid address. Please try again with a new address.", caller
      end
 
     #choose a random venue from the found foursquare venue ids
-    fsid = nil
-    while !fsid do
-      fsid = fs_id_array.sample
+    fsid = fs_id_array.sample
+    if fsid == nil
+      raise ArgumentError, "Unable to find a venue. Please try again.", caller
     end
 
     #return params that can be used to make a new venue child object
@@ -82,7 +82,7 @@ class Venue < ApplicationRecord
     if !!new_ven
       return new_ven
     else
-      return "Bad Foursquare"
+      raise ArgumentError, "Venue not created in database. Please try again.", caller
     end
   end
 
