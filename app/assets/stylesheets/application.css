@@ -19,6 +19,7 @@ body {
     background-color: black;
     color: white;
     font-family: Open Sans;
+    font-size: 25px;
 }
 
  ul {
@@ -57,7 +58,7 @@ body {
 
  h1 {
    font-family: Petit Formal Script;
-   color:  #63E169;
+   color:  #63e169;
    font-weight: normal;
    font-size: 45px;
  }
@@ -101,6 +102,8 @@ input {
     border-bottom: 2px solid #66ffff;
     background: black;
     color: white;
+    font-size: 25px;
+    font-family: Open Sans;
 }
 
 input[type="submit"] {
@@ -110,7 +113,7 @@ input[type="submit"] {
     border: 2px solid #66ffff;
     background: black;
     color: white;
-    font-size: 20px;
+    font-size: 30px;
     font-family: Codystar;
     border-radius: 10px;
 }

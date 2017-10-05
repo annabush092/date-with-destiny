@@ -4,11 +4,11 @@
 <% if @user.plans.length > 0 %>
   <h2>And so it is written. . .</h2>
   <br>
-  <table style="width:30%">
+  <table style="width:60%">
   <tr><% @user.plans.sort_by do |pl| %>
     <% pl.date %>
     <% end.each do |pl| %>
-    <td><%= pl.date.strftime("%A, %B %d %Y") %></td>
+    <td style="width:50%"><%= pl.date.strftime("%A, %B %d %Y") %></td>
     <td><%= link_to 'See your plan', plan_path(pl) %></td>
   </tr>
   <% end %>

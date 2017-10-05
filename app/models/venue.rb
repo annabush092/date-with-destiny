@@ -2,8 +2,6 @@ class Venue < ApplicationRecord
 
   self.abstract_class = true
 
-  validates :street_address, uniqueness: true
-
   # def self.find_venue(zipcode)
   #   zip_array = self.all.select { |venue| venue.zipcode == zipcode }
   #   zip_array.sample
@@ -102,15 +100,18 @@ class Venue < ApplicationRecord
     end
 
     #find foursquare ids in this zipcode of the right type
-    fs_id_array = Foursquare.client.search_venues(:ll => locations[zip.to_sym], radius: 5000, categoryId: rand_category)[:venues].map do |venue|
+    fs_id_array = Foursquare.client.search_venues(:ll => locations[zip.to_sym], radius: 6000, categoryId: rand_category)[:venues].map do |venue|
          venue[:id]
      end
 
     #choose a random venue from the found foursquare venue ids
-    fsid = fs_id_array.sample
+    fsid = nil
+    while !fsid do
+      fsid = fs_id_array.sample
+    end
 
     #return params that can be used to make a new venue child object
-    self.create(Foursquare.make_params(fsid))
+    self.find_or_create_by(Foursquare.make_params(fsid))
   end
 
   def self.zipcodes
