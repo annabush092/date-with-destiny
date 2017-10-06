@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171005175441) do
+ActiveRecord::Schema.define(version: 20171006130901) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
     t.string "street_address"
     t.string "city"
     t.string "state"
-    t.integer "zipcode"
+    t.string "zipcode"
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20171005175441) do
     t.string "street_address"
     t.string "city"
     t.string "state"
-    t.integer "zipcode"
+    t.string "zipcode"
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20171005175441) do
     t.string "street_address"
     t.string "city"
     t.string "state"
-    t.integer "zipcode"
+    t.string "zipcode"
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
