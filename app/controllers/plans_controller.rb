@@ -18,7 +18,7 @@ class PlansController < ApplicationController
       @activity = Activity.find_venue(@plan.address)
       @nightlife = Nightlife.find_venue(@plan.address)
     rescue ArgumentError => msg
-      @plan.errors[:activity_id] << msg
+      @error = msg
     end
 
     if @restaurant && @activity && @nightlife

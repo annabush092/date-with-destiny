@@ -1,9 +1,13 @@
 <div>
   <%  if @plan.errors.any? %>
-  <% @plan.errors.full_messages.each do |m| %>
-  <%= m %><br>
+    <% @plan.errors.full_messages.each do |m| %>
+      <%= m %><br>
+    <% end %>
   <% end %>
-<% end %>
+  <% if @error %>
+    <%= @error %><br>
+  <% end %>
+
 
 <h1>Make a date with destiny...</h1>
 

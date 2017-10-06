@@ -64,7 +64,7 @@ class Venue < ApplicationRecord
 
     if !!coordinates
     #find foursquare ids in this zipcode of the right type
-      fs_id_array = Foursquare.client.search_venues(:ll => coordinates.join(", "), radius: 6000, categoryId: rand_category, limit: 5)[:venues].map do |venue|
+      fs_id_array = Foursquare.client.search_venues(:ll => coordinates.join(", "), radius: 6000, categoryId: rand_category, limit: 10)[:venues].map do |venue|
            venue[:id]
        end
      else
