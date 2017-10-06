@@ -2,27 +2,33 @@
 
 <h1> And so it is written...</h1>
 <h2><%= @plan.date.strftime("%A, %B %d %Y") %></h2>
-<br>
+Start Location: <%= @plan.address %>
+<table style="width:100%">
+<td style="width:40%">
+<img src="<%=image_path("ball.png")%>" width=500px>
+<td style="vertical-align: text-top">
 <h2>Activity</h2>
-<table style="width:60%">
+<table style="width:100%">
 <tr>
   <td style="width:50%"><%= @plan.activity.name %></td>
   <td><%= link_to 'Venue info', activity_path(@plan.activity) %></td>
 </tr>
 </table>
 <h2>Dinner</h2>
-<table style="width:60%">
+<table style="width:100%">
 <tr>
   <td style="width:50%"><%= @plan.restaurant.name %></td>
   <td><%= link_to 'Venue info', restaurant_path(@plan.restaurant) %></td>
 </tr>
 </table>
 <h2>Nightlife</h2>
-<table style="width:60%">
+<table style="width:100%">
 <tr>
   <td style="width:50%"><%= @plan.nightlife.name %></td>
   <td><%= link_to 'Venue info', nightlife_path(@plan.nightlife) %></td>
 </tr>
+</table>
+</td>
 </table>
 <br>
 <br>

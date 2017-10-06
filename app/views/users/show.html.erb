@@ -3,12 +3,15 @@
 
 <% if @user.plans.length > 0 %>
   <h2>And so it is written. . .</h2>
-  <br>
-  <table style="width:60%">
+  <table style="width:90%">
+    <th style="text-align:left"><h2>Date</h2></th>
+    <th style="text-align:left"><h2>Start Location<h2></th>
+    <th></th>
   <tr><% @user.plans.sort_by do |pl| %>
     <% pl.date %>
     <% end.each do |pl| %>
-    <td style="width:50%"><%= pl.date.strftime("%A, %B %d %Y") %></td>
+    <td style="width:35%"><%= pl.date.strftime("%A, %B %d %Y") %></td>
+    <td style="width:40%"><%= pl.address %></td>
     <td><%= link_to 'See your plan', plan_path(pl) %></td>
   </tr>
   <% end %>
@@ -21,5 +24,5 @@
 <br>
 <h1><%= link_to 'MAKE A DATE WITH DESTINY', new_plan_path %></h1>
 
-<h2><%= link_to 'edit user', edit_user_path(@user) %></h2>
+<h1><%= link_to 'edit user', edit_user_path(@user) %></h1>
 </div>
