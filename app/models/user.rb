@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  
   has_many :plans
   has_many :nightlives, through: :plans
   has_many :activities, through: :plans
